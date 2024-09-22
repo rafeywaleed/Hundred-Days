@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hundred_days/add_tasks.dart';
 import 'package:hundred_days/auth/welcome.dart';
 import 'package:hundred_days/homescreen.dart';
 import 'package:sizer/sizer.dart';
@@ -21,9 +22,11 @@ class HundredDays extends StatelessWidget {
   Widget build(BuildContext context) {
     return Sizer(
       builder: (context, orientation, deviceType) => MaterialApp(
-          theme: ThemeData(fontFamily: 'Manrope'),
-          home: HomeScreen() // Your welcome page or login page
-          ),
+        theme: ThemeData(fontFamily: 'Manrope'),
+        home: AddTasks(
+          input: 1,
+        ),
+      ),
     );
   }
 }

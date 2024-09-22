@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:hundred_days/utils/dialog_box.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -8,11 +9,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<Map<String, dynamic>> dailyTasks = [
-    {'task': 'Manuka honey', 'completed': false},
-    {'task': 'Peanut butter', 'completed': true},
-    {'task': 'Extra virgin olive oil', 'completed': false},
-  ];
+  List<Map<String, dynamic>> dailyTasks = [];
 
   List<Map<String, dynamic>> additionalTasks = [];
 
@@ -67,63 +64,67 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                            blurRadius: 10,
-                            spreadRadius: 1,
-                            color: Colors.grey,
-                            offset: Offset(0, 5))
-                      ],
-                      color: Colors.white,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          // Days left for New Year
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                '$daysLeft',
-                                style: TextStyle(
-                                  fontFamily: 'Manrope',
-                                  fontSize: 50,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.blue,
-                                ),
-                              ),
-                              Text(
-                                'days left for new year',
-                                style: TextStyle(
-                                  fontFamily: 'Manrope',
-                                  fontSize: 16,
-                                  color: Colors.grey[600],
-                                ),
-                              ),
-                            ],
-                          ),
-                          // Circular progress indicator
-                          CircularPercentIndicator(
-                            radius: 60.0,
-                            lineWidth: 8.0,
-                            percent: taskCompletion,
-                            center: new Text(
-                              "${(taskCompletion * 100).toStringAsFixed(0)}%",
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.blue,
-                                fontFamily: 'Manrope',
-                              ),
-                            ),
-                            progressColor: Colors.blue,
-                            backgroundColor: Colors.grey[300]!,
-                          ),
+                  FadeInDown(
+                    delay: const Duration(milliseconds: 500),
+                    duration: const Duration(milliseconds: 1000),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                              color: Colors.grey,
+                              offset: Offset(0, 5))
                         ],
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            // Days left for New Year
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '$daysLeft',
+                                  style: TextStyle(
+                                    fontFamily: 'Manrope',
+                                    fontSize: 50,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                                Text(
+                                  'days left for new year',
+                                  style: TextStyle(
+                                    fontFamily: 'Manrope',
+                                    fontSize: 16,
+                                    color: Colors.grey[600],
+                                  ),
+                                ),
+                              ],
+                            ),
+                            // Circular progress indicator
+                            CircularPercentIndicator(
+                              radius: 60.0,
+                              lineWidth: 8.0,
+                              percent: taskCompletion,
+                              center: new Text(
+                                "${(taskCompletion * 100).toStringAsFixed(0)}%",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.blue,
+                                  fontFamily: 'Manrope',
+                                ),
+                              ),
+                              progressColor: Colors.blue,
+                              backgroundColor: Colors.grey[300]!,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
